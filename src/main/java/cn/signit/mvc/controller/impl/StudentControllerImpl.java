@@ -30,20 +30,6 @@ import cn.signit.mvc.service.StudentService;
 @RestController
 public class StudentControllerImpl implements StudentController {
     
-    //@PostMapping("/students")
-    //@ResponseStatus(HttpStatus.CREATED)
-    public VoAddStudentReq test(@RequestBody VoAddStudentReq voAddStudentReq) {
-        
-        System.out.println(voAddStudentReq.getBirth());
-        
-        return voAddStudentReq;
-    }
-    
-    /**
-     * 
-     * 正式开始
-     */
-    
     @Autowired
     private StudentService studentService;
     
@@ -52,6 +38,7 @@ public class StudentControllerImpl implements StudentController {
      * @param id
      * @return
      */
+    @Override
     @GetMapping("/students/{id}")
     @ResponseStatus(HttpStatus.OK)
     public VoResponseBody<VoGetStudentResp> getStudent(@PathVariable("id")Integer id){
@@ -74,6 +61,7 @@ public class StudentControllerImpl implements StudentController {
      * @param vo
      * @return
      */
+    @Override
     @GetMapping("/students")
     @ResponseStatus(HttpStatus.OK)
     public VoResponseBody<VoGetStudentResp> getStudents() {
@@ -95,6 +83,7 @@ public class StudentControllerImpl implements StudentController {
      * @param 
      * @return
      */
+    @Override
     @PutMapping("/students/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public VoResponseBody<VoUpdateStudentResp> updateStudent(@PathVariable("id")Integer id,
@@ -119,6 +108,7 @@ public class StudentControllerImpl implements StudentController {
      * @param voAddAuthorReq
      * @return
      */
+    @Override
     @PostMapping("/students")
     @ResponseStatus(HttpStatus.CREATED)
     public VoResponseBody<VoAddStudentResp> addStudent(
@@ -142,6 +132,7 @@ public class StudentControllerImpl implements StudentController {
      * 删除指定id的行
      * @param id
      */
+    @Override
     @DeleteMapping("/students/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteStudent(@PathVariable("id")Integer id) {
